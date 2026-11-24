@@ -1,0 +1,223 @@
+/* ==========================================================
+   PULSO — style.css
+   Etapa 2: base visual, cabeçalho, rodapé e página inicial
+   Seções: 1 Variáveis | 2 Reset e base | 3 Layout | 4 Botões
+           5 Cabeçalho | 6 Home | 7 Cards | 8 Rodapé
+   ========================================================== */
+
+/* 1. VARIÁVEIS (as cores ficam só aqui; facilita o modo claro) */
+:root {
+  --cor-fundo: #101C18;
+  --cor-superficie: #263A31;
+  --cor-destaque: #A3E6B5;
+  --cor-texto: #FFFFFF;
+  --cor-texto-suave: #C9D6CE;     /* textos secundários, com bom contraste */
+  --cor-texto-botao: #101C18;     /* texto escuro sobre o botão verde */
+  --cor-borda: rgba(163, 230, 181, 0.25);
+
+  --raio: 12px;
+  --espaco: 1rem;
+  --largura-max: 1200px;
+  --transicao: 0.2s ease;
+}
+
+/* 2. RESET E BASE */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { font-size: 100%; scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--cor-fundo);
+  color: var(--cor-texto);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+main { flex: 1; }
+
+h1, h2, h3 { line-height: 1.2; margin: 0 0 0.75rem; }
+h1 { font-size: clamp(2.25rem, 7vw, 4rem); font-weight: 800; letter-spacing: -0.02em; }
+h2 { font-size: clamp(1.5rem, 4vw, 2.25rem); font-weight: 700; }
+h3 { font-size: 1.25rem; font-weight: 700; }
+p  { margin: 0 0 1rem; }
+ul { margin: 0; padding: 0; list-style: none; }
+img, svg { max-width: 100%; }
+
+a { color: var(--cor-destaque); }
+
+/* Foco visível para navegação por teclado (nunca remover) */
+:focus-visible {
+  outline: 3px solid var(--cor-destaque);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Link "Pular para o conteúdo": aparece só ao receber foco */
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  padding: 0.5rem 1rem;
+  background: var(--cor-destaque);
+  color: var(--cor-texto-botao);
+  font-weight: 700;
+  border-radius: 8px;
+  z-index: 100;
+}
+.skip-link:focus { top: 1rem; }
+
+/* Respeita quem prefere menos movimento */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; }
+}
+
+/* 3. LAYOUT */
+.container {
+  width: 100%;
+  max-width: var(--largura-max);
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+.section { padding-block: 3rem; }
+.section-intro { color: var(--cor-texto-suave); max-width: 60ch; margin-bottom: 2rem; }
+
+/* 4. BOTÕES */
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  min-height: 44px;               /* alvo de toque confortável */
+  border: 2px solid var(--cor-destaque);
+  border-radius: var(--raio);
+  font: inherit;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color var(--transicao), color var(--transicao);
+}
+.btn-primary { background: var(--cor-destaque); color: var(--cor-texto-botao); }
+.btn-primary:hover { background: var(--cor-texto); border-color: var(--cor-texto); }
+.btn-secondary { background: transparent; color: var(--cor-destaque); }
+.btn-secondary:hover { background: var(--cor-destaque); color: var(--cor-texto-botao); }
+.btn-small { padding: 0.5rem 1.1rem; }
+
+/* 5. CABEÇALHO */
+.site-header {
+  background: var(--cor-superficie);
+  border-bottom: 1px solid var(--cor-borda);
+}
+
+.header-inner {
+  display: flex;
+  flex-wrap: wrap;                /* no celular, os itens quebram de linha */
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1.5rem;
+  padding-block: 0.75rem;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--cor-destaque);
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+}
+
+.nav-list { display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem; }
+
+.nav-list a {
+  display: inline-block;
+  padding: 0.5rem 0.25rem;
+  color: var(--cor-texto);
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+}
+.nav-list a:hover { color: var(--cor-destaque); }
+.nav-list a[aria-current="page"] {
+  color: var(--cor-destaque);
+  border-bottom-color: var(--cor-destaque);   /* link da página atual */
+}
+
+/* 6. PÁGINA INICIAL */
+.hero { padding-block: 4rem 3rem; }
+.hero-inner { max-width: 900px; margin-inline: 0; }
+.hero-text {
+  max-width: 55ch;
+  margin-bottom: 2rem;
+  font-size: 1.125rem;
+  color: var(--cor-texto-suave);
+}
+.hero-actions { display: flex; flex-wrap: wrap; gap: 1rem; }
+
+/* Linha de batimento: elemento marcante da identidade */
+.pulse-line {
+  margin-top: 3rem;
+  height: 80px;
+  color: var(--cor-destaque);
+}
+.pulse-line svg { width: 100%; height: 100%; display: block; }
+
+.cta-panel {
+  background: var(--cor-superficie);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  padding: 2rem 1.5rem;
+}
+.cta-panel p { max-width: 60ch; color: var(--cor-texto-suave); }
+
+/* 7. CARDS */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background: var(--cor-superficie);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  padding: 1.5rem;
+}
+.card p { color: var(--cor-texto-suave); flex: 1; }
+
+.card-link { font-weight: 700; }
+
+/* 8. RODAPÉ */
+.site-footer {
+  margin-top: 3rem;
+  background: var(--cor-superficie);
+  border-top: 1px solid var(--cor-borda);
+  padding-block: 2rem;
+}
+
+.footer-inner {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem 2rem;
+}
+
+.footer-logo {
+  margin-bottom: 0.25rem;
+  color: var(--cor-destaque);
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.footer-links li + li { margin-top: 0.25rem; }
+.footer-links a { display: inline-block; padding: 0.25rem 0; }
+
+.footer-note { font-size: 0.875rem; color: var(--cor-texto-suave); margin: 0; }
