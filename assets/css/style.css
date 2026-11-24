@@ -1,11 +1,6 @@
-/* ==========================================================
-   PULSO — style.css
-   Etapa 2: base visual, cabeçalho, rodapé e página inicial
-   Seções: 1 Variáveis | 2 Reset e base | 3 Layout | 4 Botões
-           5 Cabeçalho | 6 Home | 7 Cards | 8 Rodapé
-   ========================================================== */
 
-/* 1. VARIÁVEIS (as cores ficam só aqui; facilita o modo claro) */
+
+/* 1. VARIÁVEIS */
 :root {
   --cor-fundo: #101C18;
   --cor-superficie: #263A31;
