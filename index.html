@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="PULSO: plataforma fitness com treinos, alimentação e acompanhamento de progresso. Evolua no seu ritmo.">
+  <title>PULSO | Evolua no seu ritmo</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- Link de acessibilidade: permite pular o menu com o teclado -->
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <!-- ========== CABEÇALHO (igual em todas as páginas) ========== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html" aria-label="PULSO, página inicial">
+        <svg class="logo-icon" viewBox="0 0 32 32" width="28" height="28" aria-hidden="true" focusable="false">
+          <polyline points="2,17 9,17 12,8 17,25 21,13 24,17 30,17" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>PULSO</span>
+      </a>
+
+      <nav class="main-nav" aria-label="Navegação principal">
+        <ul class="nav-list">
+          <li><a href="index.html" aria-current="page">Início</a></li>
+          <li><a href="treinos.html">Treinos</a></li>
+          <li><a href="alimentacao.html">Alimentação</a></li>
+          <li><a href="progresso.html">Progresso</a></li>
+          <li><a href="contato.html">Contato</a></li>
+        </ul>
+      </nav>
+
+      <a class="btn btn-primary btn-small" href="login.html">Entrar</a>
+    </div>
+  </header>
+
+  <!-- ========== CONTEÚDO PRINCIPAL ========== -->
+  <main id="conteudo">
+
+    <!-- Apresentação -->
+    <section class="hero" aria-labelledby="titulo-hero">
+      <div class="container hero-inner">
+        <h1 id="titulo-hero">Evolua no seu ritmo.</h1>
+        <p class="hero-text">
+          O PULSO reúne sugestões de treinos, ideias de refeições e o registro
+          do seu progresso em um só lugar. Comece com o que cabe na sua rotina
+          e acompanhe cada avanço.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="login.html">Criar minha conta</a>
+          <a class="btn btn-secondary" href="treinos.html">Ver treinos</a>
+        </div>
+
+        <!-- Ilustração decorativa: linha de batimento (não tem informação) -->
+        <div class="pulse-line" aria-hidden="true">
+          <svg viewBox="0 0 600 80" preserveAspectRatio="none" focusable="false">
+            <polyline points="0,40 150,40 175,40 195,8 225,72 250,22 270,40 420,40 445,40 465,14 490,66 510,40 600,40" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- Áreas da plataforma -->
+    <section class="section" aria-labelledby="titulo-areas">
+      <div class="container">
+        <h2 id="titulo-areas">O que você encontra aqui</h2>
+        <p class="section-intro">Três áreas para organizar sua rotina de saúde e performance.</p>
+
+        <div class="card-grid">
+          <article class="card">
+            <h3>Treinos</h3>
+            <p>Sugestões organizadas por categoria, com duração, nível e lista de exercícios.</p>
+            <a class="card-link" href="treinos.html">Explorar treinos</a>
+          </article>
+
+          <article class="card">
+            <h3>Alimentação</h3>
+            <p>Ideias gerais de refeições para cada momento do dia. Não substituem a orientação de um nutricionista.</p>
+            <a class="card-link" href="alimentacao.html">Ver refeições</a>
+          </article>
+
+          <article class="card">
+            <h3>Progresso</h3>
+            <p>Registre peso e medidas ao longo do tempo e veja sua evolução com clareza.</p>
+            <a class="card-link" href="progresso.html">Acompanhar progresso</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Chamada para cadastro -->
+    <section class="section" aria-labelledby="titulo-cta">
+      <div class="container">
+        <div class="cta-panel">
+          <h2 id="titulo-cta">Pronto para começar?</h2>
+          <p>
+            Crie uma conta de demonstração e explore a plataforma.
+            Este é um projeto acadêmico: não use senhas ou dados reais.
+          </p>
+          <a class="btn btn-primary" href="login.html">Criar conta de demonstração</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========== RODAPÉ (igual em todas as páginas) ========== -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <p class="footer-logo">PULSO</p>
+        <p>Evolua no seu ritmo.</p>
+      </div>
+
+      <nav aria-label="Links do rodapé">
+        <ul class="footer-links">
+          <li><a href="index.html">Início</a></li>
+          <li><a href="treinos.html">Treinos</a></li>
+          <li><a href="alimentacao.html">Alimentação</a></li>
+          <li><a href="progresso.html">Progresso</a></li>
+          <li><a href="contato.html">Contato</a></li>
+        </ul>
+      </nav>
+
+      <p class="footer-note">
+        Projeto acadêmico da disciplina de Desenvolvimento de Interfaces.
+        O login é apenas demonstrativo e as sugestões de treino e alimentação
+        são gerais, sem substituir orientação profissional.
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>
