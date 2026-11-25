@@ -6,12 +6,14 @@
   <meta name="description" content="PULSO: plataforma fitness com treinos, alimentação e acompanhamento de progresso. Evolua no seu ritmo.">
   <title>PULSO | Evolua no seu ritmo</title>
   <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
 </head>
 <body>
 
+  <!-- Link de acessibilidade: permite pular o menu com o teclado -->
   <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 
-  <!-- CABEÇALHO  -->
+  <!-- CABEÇALHO -->
   <header class="site-header">
     <div class="container header-inner">
       <a class="logo" href="index.html" aria-label="PULSO, página inicial">
@@ -21,7 +23,12 @@
         <span>PULSO</span>
       </a>
 
-      <nav class="main-nav" aria-label="Navegação principal">
+      <!-- Botão do menu -->
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu-principal" aria-label="Abrir menu">
+        <span class="nav-toggle-bars" aria-hidden="true"></span>
+      </button>
+
+      <nav class="main-nav" id="menu-principal" aria-label="Navegação principal">
         <ul class="nav-list">
           <li><a href="index.html" aria-current="page">Início</a></li>
           <li><a href="treinos.html">Treinos</a></li>
@@ -31,7 +38,7 @@
         </ul>
       </nav>
 
-      <a class="btn btn-primary btn-small" href="login.html">Entrar</a>
+      <a class="btn btn-primary btn-small header-cta" href="login.html">Entrar</a>
     </div>
   </header>
 
@@ -52,7 +59,7 @@
           <a class="btn btn-secondary" href="treinos.html">Ver treinos</a>
         </div>
 
-        <!-- Ilustração decorativa: linha de batimento  -->
+        <!-- Ilustração decorativa: linha de batimento -->
         <div class="pulse-line" aria-hidden="true">
           <svg viewBox="0 0 600 80" preserveAspectRatio="none" focusable="false">
             <polyline points="0,40 150,40 175,40 195,8 225,72 250,22 270,40 420,40 445,40 465,14 490,66 510,40 600,40" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
@@ -131,5 +138,6 @@
     </div>
   </footer>
 
+  <script src="assets/js/main.js"></script>
 </body>
 </html>
