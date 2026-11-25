@@ -1,12 +1,13 @@
-/* 1. VARIÁVEIS */
 :root {
-  --cor-fundo: #101C18;
-  --cor-superficie: #263A31;
-  --cor-destaque: #A3E6B5;
+  color-scheme: dark;
+  --cor-fundo: #0E0F0F;
+  --cor-superficie: #1A1C1B;
+  --cor-borda: #3A3F3D;
   --cor-texto: #FFFFFF;
-  --cor-texto-suave: #C9D6CE; /* textos secundários, com bom contraste */
-  --cor-texto-botao: #101C18; /* texto escuro sobre o botão verde */
-  --cor-borda: rgba(163, 230, 181, 0.25);
+  --cor-texto-suave: #B8BDBA;
+  --cor-destaque: #A3E6B5;
+  --cor-texto-botao: #0E0F0F;
+  --cor-botao-hover: #FFFFFF;
 
   --raio: 12px;
   --espaco: 1rem;
@@ -14,7 +15,20 @@
   --transicao: 0.2s ease;
 }
 
-/* 2. RESET E BASE */
+/* Tema claro */
+[data-theme="light"] {
+  color-scheme: light;
+  --cor-fundo: #F5F6F5;
+  --cor-superficie: #FFFFFF;
+  --cor-borda: #D0D4D2;
+  --cor-texto: #161918;
+  --cor-texto-suave: #4A504D;
+  --cor-destaque: #1E6B3A;
+  --cor-texto-botao: #FFFFFF;
+  --cor-botao-hover: #14502B;
+}
+
+/* RESET E BASE */
 *, *::before, *::after { box-sizing: border-box; }
 
 html { font-size: 100%; scroll-behavior: smooth; }
@@ -43,14 +57,14 @@ img, svg { max-width: 100%; }
 
 a { color: var(--cor-destaque); }
 
-/* Foco visível para navegação por teclado (nunca remover) */
+/* Foco visível para navegação por teclado */
 :focus-visible {
   outline: 3px solid var(--cor-destaque);
   outline-offset: 3px;
   border-radius: 4px;
 }
 
-/* Link "Pular para o conteúdo": aparece só ao receber foco */
+/* Link para pular o menu */
 .skip-link {
   position: absolute;
   left: 1rem;
@@ -70,7 +84,7 @@ a { color: var(--cor-destaque); }
   * { transition: none !important; }
 }
 
-/* 3. LAYOUT */
+/* LAYOUT */
 .container {
   width: 100%;
   max-width: var(--largura-max);
@@ -81,7 +95,7 @@ a { color: var(--cor-destaque); }
 .section { padding-block: 3rem; }
 .section-intro { color: var(--cor-texto-suave); max-width: 60ch; margin-bottom: 2rem; }
 
-/* 4. BOTÕES */
+/* BOTÕES */
 .btn {
   display: inline-block;
   padding: 0.75rem 1.5rem;
@@ -96,12 +110,12 @@ a { color: var(--cor-destaque); }
   transition: background-color var(--transicao), color var(--transicao);
 }
 .btn-primary { background: var(--cor-destaque); color: var(--cor-texto-botao); }
-.btn-primary:hover { background: var(--cor-texto); border-color: var(--cor-texto); }
+.btn-primary:hover { background: var(--cor-botao-hover); border-color: var(--cor-botao-hover); }
 .btn-secondary { background: transparent; color: var(--cor-destaque); }
 .btn-secondary:hover { background: var(--cor-destaque); color: var(--cor-texto-botao); }
 .btn-small { padding: 0.5rem 1.1rem; }
 
-/* 5. CABEÇALHO */
+/* CABEÇALHO */
 .site-header {
   background: var(--cor-superficie);
   border-bottom: 1px solid var(--cor-borda);
@@ -120,12 +134,14 @@ a { color: var(--cor-destaque); }
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  color: var(--cor-destaque);
+  color: var(--cor-texto);
   font-size: 1.5rem;
   font-weight: 800;
   letter-spacing: 0.08em;
   text-decoration: none;
 }
+
+.logo-icon { color: var(--cor-destaque); }
 
 .nav-list { display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem; }
 
@@ -138,12 +154,13 @@ a { color: var(--cor-destaque); }
 }
 .nav-list a:hover { color: var(--cor-destaque); }
 .nav-list a[aria-current="page"] {
-  color: var(--cor-destaque);
-  border-bottom-color: var(--cor-destaque); /* link da página atual */
+  border-bottom-color: var(--cor-destaque);
+  font-weight: 700;
 }
 
-/* Botão hambúrguer: escondido por padrão; responsive.css o mostra no celular */
-.nav-toggle {
+/* Botões do menu e do tema */
+.nav-toggle,
+.theme-toggle {
   display: none;
   align-items: center;
   justify-content: center;
@@ -156,9 +173,10 @@ a { color: var(--cor-destaque); }
   border-radius: var(--raio);
   cursor: pointer;
 }
-.nav-toggle:hover { background: var(--cor-destaque); color: var(--cor-texto-botao); }
+.nav-toggle:hover,
+.theme-toggle:hover { background: var(--cor-destaque); color: var(--cor-texto-botao); }
 
-/* Ícone de três linhas desenhado com CSS */
+/* Ícone de três linhas do menu */
 .nav-toggle-bars,
 .nav-toggle-bars::before,
 .nav-toggle-bars::after {
@@ -179,9 +197,21 @@ a { color: var(--cor-destaque); }
 .nav-toggle[aria-expanded="true"] .nav-toggle-bars::before { top: 0; transform: rotate(45deg); }
 .nav-toggle[aria-expanded="true"] .nav-toggle-bars::after { top: 0; transform: rotate(-45deg); }
 
-/* 6. PÁGINA INICIAL */
+/* Botão de tema */
+.js .theme-toggle { display: inline-flex; }
+.theme-toggle svg { display: block; width: 22px; height: 22px; }
+.theme-toggle .icon-moon { display: none; }
+[data-theme="light"] .theme-toggle .icon-sun { display: none; }
+[data-theme="light"] .theme-toggle .icon-moon { display: block; }
+
+.header-actions { display: flex; align-items: center; gap: 0.5rem; }
+
+/* PÁGINA INICIAL */
 .hero { padding-block: 4rem 3rem; }
-.hero-inner { max-width: 900px; margin-inline: 0; }
+.hero-inner {
+  max-width: 900px;
+  margin-inline: auto;
+}
 .hero-text {
   max-width: 55ch;
   margin-bottom: 2rem;
@@ -190,7 +220,6 @@ a { color: var(--cor-destaque); }
 }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 1rem; }
 
-/* Linha de batimento: elemento marcante da identidade */
 .pulse-line {
   margin-top: 3rem;
   height: 80px;
@@ -206,7 +235,7 @@ a { color: var(--cor-destaque); }
 }
 .cta-panel p { max-width: 60ch; color: var(--cor-texto-suave); }
 
-/* 7. CARDS */
+/* CARDS */
 .card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -223,9 +252,9 @@ a { color: var(--cor-destaque); }
 }
 .card p { color: var(--cor-texto-suave); flex: 1; }
 
-.card-link { font-weight: 700; }
+.card-link { font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
 
-/* 8. RODAPÉ */
+/* RODAPÉ */
 .site-footer {
   margin-top: 3rem;
   background: var(--cor-superficie);
@@ -241,13 +270,20 @@ a { color: var(--cor-destaque); }
 
 .footer-logo {
   margin-bottom: 0.25rem;
-  color: var(--cor-destaque);
+  color: var(--cor-texto);
   font-size: 1.25rem;
   font-weight: 800;
   letter-spacing: 0.08em;
 }
 
 .footer-links li + li { margin-top: 0.25rem; }
-.footer-links a { display: inline-block; padding: 0.25rem 0; }
+.footer-links a {
+  display: inline-block;
+  padding: 0.25rem 0;
+  color: var(--cor-texto-suave);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.footer-links a:hover { color: var(--cor-texto); }
 
 .footer-note { font-size: 0.875rem; color: var(--cor-texto-suave); margin: 0; }
