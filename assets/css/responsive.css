@@ -1,7 +1,9 @@
 /* 1. CELULAR (base: 320px a 479px) */
-body { overflow-wrap: break-word; } /* evita texto estourando a tela */
+body { overflow-wrap: break-word; }
 
+.container { padding-inline: 1rem; }
 .header-inner { gap: 0.5rem 0.75rem; }
+.header-actions .btn-small { padding-inline: 0.85rem; }
 .logo { font-size: 1.25rem; margin-right: auto; }
 
 .hero { padding-block: 2.5rem 2rem; }
@@ -21,17 +23,13 @@ body { overflow-wrap: break-word; } /* evita texto estourando a tela */
 
 /* 2. MENU HAMBÚRGUER (somente até 767px) */
 @media (max-width: 767px) {
-  /* Ordem visual: logo | Entrar | botão do menu, e a lista abaixo */
+  /* Ordem visual: logo | Entrar + tema | botão do menu, e a lista abaixo */
   .logo { order: 1; }
-  .header-cta { order: 2; }
-  .js .nav-toggle {
-    order: 3;
-    display: inline-flex;
-  }
+  .header-actions { order: 2; }
+  .nav-toggle { order: 3; display: inline-flex; }
   .main-nav { order: 4; flex-basis: 100%; }
 
-  /* Só esconde o menu se o JavaScript estiver ativo (classe "js").
-     Sem JavaScript, os links continuam visíveis. */
+  /* Sem JavaScript, os links continuam visíveis */
   .js .main-nav { display: none; }
   .js .main-nav.is-open { display: block; }
 
@@ -52,8 +50,15 @@ body { overflow-wrap: break-word; } /* evita texto estourando a tela */
   .nav-list a[aria-current="page"] { border-left-color: var(--cor-destaque); }
 }
 
-/* 3. A PARTIR DE 480px (celulares grandes) */
+/* Telas muito estreitas (até 359px) */
+@media (max-width: 359px) {
+  .logo-icon { display: none; }
+}
+
+/* 3. A PARTIR DE 480px */
 @media (min-width: 480px) {
+  .container { padding-inline: 1.25rem; }
+  .header-actions .btn-small { padding-inline: 1.1rem; }
   .logo { font-size: 1.5rem; }
   .hero { padding-block: 3rem 2.5rem; }
   .hero-actions { flex-direction: row; }
@@ -62,11 +67,9 @@ body { overflow-wrap: break-word; } /* evita texto estourando a tela */
   .cta-panel { padding: 2rem 1.5rem; }
 }
 
-/* 4. A PARTIR DE 768px */
+/* 4. A PARTIR DE 768px (tablets) */
 @media (min-width: 768px) {
   .header-inner { gap: 0.75rem 1.5rem; }
-
-  /* Menu horizontal volta a aparecer; o botão fica escondido */
   .nav-toggle { display: none; }
 
   .hero { padding-block: 4rem 3rem; }
@@ -74,14 +77,14 @@ body { overflow-wrap: break-word; } /* evita texto estourando a tela */
   .section { padding-block: 3rem; }
 
   .card-grid { grid-template-columns: repeat(2, 1fr); }
-  .card-grid .card:last-child { grid-column: 1 / -1; } /* 3º card ocupa a largura toda */
+  .card-grid .card:last-child { grid-column: 1 / -1; }
 
   .site-footer { margin-top: 3rem; }
   .footer-inner { grid-template-columns: repeat(2, 1fr); }
   .footer-note { grid-column: 1 / -1; }
 }
 
-/* 5. A PARTIR DE 1024px */
+/* 5. A PARTIR DE 1024px (desktop) */
 @media (min-width: 1024px) {
   .pulse-line { height: 80px; max-width: none; }
 
