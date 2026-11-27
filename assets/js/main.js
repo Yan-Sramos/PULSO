@@ -113,3 +113,4 @@
     });
   }
 })();
+/* PULSO V2.0 — republicação */
