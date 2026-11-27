@@ -33,6 +33,8 @@
     document.addEventListener('DOMContentLoaded', function () {
       iniciarTema();
       iniciarMenu();
+      iniciarAcessibilidade();
+      iniciarCarrossel();
     });
 
     function iniciarTema() {
@@ -109,3 +111,112 @@
       });
     }
   })();
+
+  /* ACESSIBILIDADE: TAMANHO DA FONTE E ALTO CONTRASTE */
+  function iniciarAcessibilidade() {
+    var acoes = document.querySelector('.header-actions');
+    if (!acoes) return;
+
+    var controles = document.createElement('div');
+    controles.className = 'accessibility-controls';
+    controles.setAttribute('aria-label', 'Controles de acessibilidade');
+    controles.innerHTML =
+      '<button type="button" class="accessibility-btn" id="fonte-diminuir" aria-label="Diminuir tamanho da fonte" title="Diminuir fonte">A−</button>' +
+      '<button type="button" class="accessibility-btn" id="fonte-aumentar" aria-label="Aumentar tamanho da fonte" title="Aumentar fonte">A+</button>' +
+      '<button type="button" class="accessibility-btn contrast-toggle" id="alto-contraste" aria-pressed="false" title="Ativar alto contraste">◐ Contraste</button>';
+    acoes.appendChild(controles);
+
+    var tamanhos = [100, 110, 120, 130];
+    var tamanhoSalvo = 100;
+    try { tamanhoSalvo = Number(localStorage.getItem('pulso-fonte')) || 100; } catch (erro) {}
+    if (tamanhos.indexOf(tamanhoSalvo) === -1) tamanhoSalvo = 100;
+
+    function aplicarFonte() {
+      raiz.style.fontSize = tamanhoSalvo + '%';
+      var menos = document.getElementById('fonte-diminuir');
+      var mais = document.getElementById('fonte-aumentar');
+      menos.disabled = tamanhoSalvo === tamanhos[0];
+      mais.disabled = tamanhoSalvo === tamanhos[tamanhos.length - 1];
+      try { localStorage.setItem('pulso-fonte', String(tamanhoSalvo)); } catch (erro) {}
+    }
+    document.getElementById('fonte-aumentar').addEventListener('click', function () {
+      var i = tamanhos.indexOf(tamanhoSalvo);
+      if (i < tamanhos.length - 1) tamanhoSalvo = tamanhos[i + 1];
+      aplicarFonte();
+    });
+    document.getElementById('fonte-diminuir').addEventListener('click', function () {
+      var i = tamanhos.indexOf(tamanhoSalvo);
+      if (i > 0) tamanhoSalvo = tamanhos[i - 1];
+      aplicarFonte();
+    });
+    aplicarFonte();
+
+    var contraste = false;
+    try { contraste = localStorage.getItem('pulso-alto-contraste') === 'true'; } catch (erro) {}
+    var botaoContraste = document.getElementById('alto-contraste');
+    function aplicarContraste() {
+      raiz.setAttribute('data-contrast', contraste ? 'high' : 'normal');
+      botaoContraste.setAttribute('aria-pressed', String(contraste));
+      botaoContraste.textContent = contraste ? '✓ Contraste' : '◐ Contraste';
+      botaoContraste.title = contraste ? 'Desativar alto contraste' : 'Ativar alto contraste';
+      try { localStorage.setItem('pulso-alto-contraste', String(contraste)); } catch (erro) {}
+    }
+    botaoContraste.addEventListener('click', function () {
+      contraste = !contraste;
+      aplicarContraste();
+    });
+    aplicarContraste();
+  }
+
+  /* CARROSSEL DA PÁGINA INICIAL */
+  function iniciarCarrossel() {
+    var carrossel = document.querySelector('[data-carousel]');
+    if (!carrossel) return;
+    var slides = Array.prototype.slice.call(carrossel.querySelectorAll('.carousel-slide'));
+    var anterior = carrossel.querySelector('[data-carousel-prev]');
+    var proximo = carrossel.querySelector('[data-carousel-next]');
+    var indicadores = carrossel.querySelector('[data-carousel-dots]');
+    if (!slides.length || !anterior || !proximo || !indicadores) return;
+
+    var atual = 0;
+    var intervalo = null;
+    indicadores.innerHTML = slides.map(function (_, i) {
+      return '<button type="button" class="carousel-dot" aria-label="Ir para imagem ' + (i + 1) + '" aria-current="' + (i === 0 ? 'true' : 'false') + '" data-slide="' + i + '"></button>';
+    }).join('');
+    var pontos = Array.prototype.slice.call(indicadores.querySelectorAll('button'));
+
+    function mostrar(indice) {
+      atual = (indice + slides.length) % slides.length;
+      slides.forEach(function (slide, i) {
+        slide.hidden = i !== atual;
+        slide.setAttribute('aria-hidden', String(i !== atual));
+      });
+      pontos.forEach(function (ponto, i) {
+        ponto.setAttribute('aria-current', String(i === atual));
+      });
+    }
+    function iniciarAuto() {
+      pararAuto();
+      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        intervalo = window.setInterval(function () { mostrar(atual + 1); }, 5000);
+      }
+    }
+    function pararAuto() {
+      if (intervalo) window.clearInterval(intervalo);
+      intervalo = null;
+    }
+    anterior.addEventListener('click', function () { mostrar(atual - 1); iniciarAuto(); });
+    proximo.addEventListener('click', function () { mostrar(atual + 1); iniciarAuto(); });
+    indicadores.addEventListener('click', function (evento) {
+      var botao = evento.target.closest('[data-slide]');
+      if (!botao) return;
+      mostrar(Number(botao.dataset.slide));
+      iniciarAuto();
+    });
+    carrossel.addEventListener('mouseenter', pararAuto);
+    carrossel.addEventListener('mouseleave', iniciarAuto);
+    carrossel.addEventListener('focusin', pararAuto);
+    carrossel.addEventListener('focusout', iniciarAuto);
+    mostrar(0);
+    iniciarAuto();
+  }
