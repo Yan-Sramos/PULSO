@@ -26,7 +26,7 @@ body { overflow-wrap: break-word; }
   /* Ordem visual: logo | Entrar + tema | botão do menu, e a lista abaixo */
   .logo { order: 1; }
   .header-actions { order: 2; }
-  .nav-toggle { order: 3; display: inline-flex; }
+  .js .nav-toggle { order: 3; display: inline-flex; }
   .main-nav { order: 4; flex-basis: 100%; }
 
   /* Sem JavaScript, os links continuam visíveis */
