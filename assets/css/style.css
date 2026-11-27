@@ -351,3 +351,20 @@ a { color: var(--cor-destaque); }
 @media (prefers-reduced-motion:reduce) {
   .pulso-carousel * { scroll-behavior:auto; transition:none !important; }
 }
+
+/* Barra de acessibilidade — visível em todas as páginas */
+.header-actions{display:flex;align-items:center;justify-content:flex-end;flex-wrap:wrap;gap:.5rem}
+.accessibility-controls{display:flex!important;align-items:center;justify-content:flex-end;flex:1 0 100%;width:100%;gap:.4rem;margin-top:.25rem}
+.accessibility-btn{display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:.45rem .7rem;border:1px solid var(--cor-destaque);border-radius:8px;background:transparent;color:var(--cor-texto);font:inherit;font-size:.875rem;font-weight:700;white-space:nowrap;cursor:pointer}
+.accessibility-btn:hover,.accessibility-btn[aria-pressed="true"]{background:var(--cor-destaque);color:var(--cor-texto-botao)}
+.accessibility-btn:disabled{opacity:.45;cursor:not-allowed}
+[data-contrast="high"]{--cor-fundo:#000;--cor-superficie:#000;--cor-borda:#fff;--cor-texto:#fff;--cor-texto-suave:#fff;--cor-destaque:#ff0;--cor-texto-botao:#000;--cor-botao-hover:#0ff;color-scheme:dark}
+[data-theme="light"][data-contrast="high"]{--cor-fundo:#fff;--cor-superficie:#fff;--cor-borda:#000;--cor-texto:#000;--cor-texto-suave:#000;--cor-destaque:#00c;--cor-texto-botao:#fff;--cor-botao-hover:#000;color-scheme:light}
+.carousel-slide[hidden]{display:none!important}
+.carousel-controls{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:.75rem;padding:.85rem 1rem}
+.carousel-arrow{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border:1px solid var(--cor-borda);border-radius:50%;background:transparent;color:var(--cor-texto);font:inherit;font-size:1.5rem;line-height:1;cursor:pointer}
+.carousel-arrow:hover{background:var(--cor-destaque);color:var(--cor-texto-botao)}
+.carousel-dots{display:flex;align-items:center;justify-content:center;gap:.45rem}
+.carousel-dot{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;padding:0;border:1px solid var(--cor-borda);border-radius:50%;background:transparent;color:var(--cor-texto);font:inherit;font-size:.875rem;font-weight:700;cursor:pointer}
+.carousel-dot[aria-current="true"]{border-color:var(--cor-destaque);background:var(--cor-destaque);color:var(--cor-texto-botao)}
+.carousel-status{flex-basis:100%;text-align:center;color:var(--cor-texto-suave);font-size:.875rem}
