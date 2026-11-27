@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Alimentação no PULSO.">
+<title>Alimentação | PULSO</title>
+<link rel="stylesheet" href="assets/css/style.css"><link rel="stylesheet" href="assets/css/responsive.css"><link rel="stylesheet" href="assets/css/pages.css">
+<script src="assets/js/main.js"></script><script src="assets/js/auth.js" defer></script><script src="assets/js/fitness.js" defer></script>
+</head><body>
+<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+<header class="site-header"><div class="container header-inner">
+<a class="logo" href="index.html"><span>PULSO</span></a>
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu-principal" aria-label="Abrir menu"><span class="nav-toggle-bars"></span></button>
+<nav class="main-nav" id="menu-principal" aria-label="Navegação principal"><ul class="nav-list">
+<li><a href="index.html">Início</a></li><li><a href="dashboard.html">Painel</a></li><li><a href="treinos.html" >Treinos</a></li><li><a href="alimentacao.html" aria-current="page">Alimentação</a></li><li><a href="progresso.html" >Progresso</a></li><li><a href="contato.html" >Contato</a></li><li><a href="perfil.html">Perfil</a></li>
+</ul></nav><div class="header-actions"><a class="btn btn-primary btn-small header-cta" href="login.html">Entrar</a><button class="theme-toggle" type="button" aria-label="Ativar modo claro" title="Ativar modo claro"><span aria-hidden="true">◐</span></button></div>
+</div></header>
+<main id="conteudo"><div class="container"><section class="page-hero"><h1>Alimentação</h1><p>Organize sua rotina e acompanhe sua evolução no PULSO.</p></section>
+<div class="notice" role="note"><p>Projeto acadêmico demonstrativo. Os dados são salvos somente neste navegador. Faça login para separar os registros por conta.</p></div>
+
+<div class="card-grid"><article class="card"><h3>Calorias registradas</h3><p id="resumo-kcal">0 kcal</p></article><article class="card"><h3>Proteínas registradas</h3><p id="resumo-prot">0 g</p></article></div>
+<div class="panel"><h2>Registrar refeição</h2><form id="form-alimentacao">
+<div class="field-row"><div class="field"><label for="dieta-data">Data</label><input id="dieta-data" type="date" required></div><div class="field"><label for="dieta-refeicao">Refeição</label><select id="dieta-refeicao"><option>Café da manhã</option><option>Almoço</option><option>Lanche</option><option>Jantar</option><option>Ceia</option></select></div></div>
+<div class="field"><label for="alimento-nome">Alimento / refeição</label><input id="alimento-nome" required maxlength="100" placeholder="Ex.: arroz, feijão e frango"></div>
+<div class="field-row"><div class="field"><label for="alimento-kcal">Calorias (kcal)</label><input id="alimento-kcal" type="number" min="0" max="10000" required></div><div class="field"><label for="alimento-prot">Proteína (g)</label><input id="alimento-prot" type="number" min="0" max="1000" step="0.1" required></div></div>
+<div id="dieta-status" class="status" role="status" aria-live="polite"></div><button class="btn btn-primary" type="submit">Salvar refeição</button></form></div>
+<div class="panel"><h2>Histórico alimentar</h2><div class="field"><label for="filtro-data-dieta">Consultar data</label><input id="filtro-data-dieta" type="date"></div><ul id="historico-alimentacao"></ul></div>
+<p class="section-intro">Os valores nutricionais são informados pelo usuário e servem apenas para organização pessoal. Para um plano alimentar individualizado, procure um nutricionista.</p></div></main>
+<footer class="site-footer"><div class="container footer-inner"><div class="footer-brand"><p class="footer-logo">PULSO</p><p>Evolua no seu ritmo.</p></div><p class="footer-note">Projeto acadêmico de Desenvolvimento de Interfaces. As informações são gerais e não substituem orientação profissional.</p></div></footer>
+
+</body></html>
