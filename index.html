@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="PULSO: plataforma fitness com treinos, alimentação e acompanhamento de progresso. Evolua no seu ritmo.">
   <title>PULSO | Evolua no seu ritmo</title>
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/style.css?v=20261127-final">
   <link rel="stylesheet" href="assets/css/responsive.css">
   <!-- No <head> de propósito: aplica o tema salvo antes da página aparecer (sem "piscar") -->
-  <script src="assets/js/main.js"></script>
+  <script src="assets/js/main.js?v=20261127-final"></script>
   <script src="assets/js/auth.js" defer></script>
 </head>
 <body>
@@ -74,23 +74,28 @@
       <div class="container">
         <h2 id="titulo-inspiracao">Inspire-se para evoluir</h2>
         <p class="section-intro">Cada treino é mais um passo na sua jornada.</p>
-        <div class="pulso-carousel" data-carousel aria-roledescription="carrossel" aria-label="Fotos de treino e academia">
-          <article class="carousel-slide" aria-label="Imagem 1 de 3">
-            <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1600&q=85" alt="Academia equipada com aparelhos de musculação" loading="lazy">
+        <div class="pulso-carousel" data-carousel tabindex="0" aria-roledescription="carrossel" aria-label="Fotos de treino e academia">
+          <article class="carousel-slide" data-carousel-slide aria-label="Foto 1 de 3" aria-hidden="false">
+            <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1600&q=85" alt="Academia equipada com aparelhos de musculação" loading="eager">
             <div class="carousel-caption"><h3>Seu espaço de evolução</h3><p>Construa consistência, um treino de cada vez.</p></div>
           </article>
-          <article class="carousel-slide" aria-label="Imagem 2 de 3" hidden>
+          <article class="carousel-slide" data-carousel-slide aria-label="Foto 2 de 3" aria-hidden="true" hidden>
             <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1600&q=85" alt="Atleta treinando força com halteres" loading="lazy">
             <div class="carousel-caption"><h3>Força e dedicação</h3><p>Respeite seu ritmo e celebre cada avanço.</p></div>
           </article>
-          <article class="carousel-slide" aria-label="Imagem 3 de 3" hidden>
+          <article class="carousel-slide" data-carousel-slide aria-label="Foto 3 de 3" aria-hidden="true" hidden>
             <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=1600&q=85" alt="Pessoa realizando exercício em academia" loading="lazy">
             <div class="carousel-caption"><h3>Movimento transforma</h3><p>O importante é continuar em movimento.</p></div>
           </article>
-          <div class="carousel-controls">
-            <button type="button" class="carousel-arrow" data-carousel-prev aria-label="Imagem anterior">‹</button>
-            <div class="carousel-dots" data-carousel-dots aria-label="Selecionar imagem"></div>
-            <button type="button" class="carousel-arrow" data-carousel-next aria-label="Próxima imagem">›</button>
+          <div class="carousel-controls" aria-label="Controles do carrossel">
+            <button type="button" class="carousel-arrow" data-carousel-prev aria-label="Foto anterior">‹</button>
+            <div class="carousel-dots" role="group" aria-label="Escolher foto">
+              <button type="button" class="carousel-dot" data-carousel-to="0" aria-label="Mostrar foto 1" aria-current="true" aria-pressed="true">1</button>
+              <button type="button" class="carousel-dot" data-carousel-to="1" aria-label="Mostrar foto 2" aria-current="false" aria-pressed="false">2</button>
+              <button type="button" class="carousel-dot" data-carousel-to="2" aria-label="Mostrar foto 3" aria-current="false" aria-pressed="false">3</button>
+            </div>
+            <button type="button" class="carousel-arrow" data-carousel-next aria-label="Próxima foto">›</button>
+            <span class="carousel-status" data-carousel-status aria-live="polite">Foto 1 de 3</span>
           </div>
         </div>
       </div>
