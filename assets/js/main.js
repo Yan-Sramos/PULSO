@@ -114,6 +114,7 @@
 
   /* ACESSIBILIDADE: TAMANHO DA FONTE E ALTO CONTRASTE */
   function iniciarAcessibilidade() {
+    var raiz = document.documentElement;
     var acoes = document.querySelector('.header-actions');
     if (!acoes) return;
 
